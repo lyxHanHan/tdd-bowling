@@ -13,7 +13,17 @@ public class BowlingGame {
                 return 300;
             }
         }
+        if (data[0]!=10&&data[1]!=10){
+            int score_1=data[0]+data[1];
+            if (score_1<10){
+                return score_1;
 
+            }
+            if(score_1==10) {
+                return score_1=10+data[2];
+            }
+            }
         return sum;
+        }
+
     }
-}
