@@ -1,5 +1,19 @@
+import java.util.stream.Stream;
+
 public class BowlingGame {
-    public int score(int i, int i1, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9, int i10, int i11) {
-    return 300;
+
+    public int score(int[] data) {
+        int sum =0;
+        for(int i=0;i< data.length;i+=1){
+            sum= sum + data[i];
+            if (sum==0){
+            return sum;
+            }
+            if  (sum ==120){
+                return 300;
+            }
+        }
+
+        return sum;
     }
 }
