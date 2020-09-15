@@ -3,27 +3,39 @@ import java.util.stream.Stream;
 public class BowlingGame {
 
     public int score(int[] data) {
-        int sum =0;
-        for(int i=0;i< data.length;i+=1){
-            sum= sum + data[i];
-            if (sum==0){
-            return sum;
+        int score = 0;
+        int round = 1;
+        for (int i = 0; i < data.length; i++) {
+            if (round == 10) {
+                score = getTheTenthScore(data, score, i);
+                break;
             }
-            if  (sum ==120){
-                return 300;
+            if (data[i] + data[i + 1] < 10) {
+                score += data[i] + data[i+1];
+                i++;
             }
+            if (data[i] + data[i + 1] == 10) {
+                score += 10 + data[i+2];
+                i++;
+            } else {
+                score += 10 + data[i+1] + data[i+2];
+            }
+            round++;
         }
-        if (data[0]!=10&&data[1]!=10){
-            int score_1=data[0]+data[1];
-            if (score_1<10){
-                return score_1;
-
-            }
-            if(score_1==10) {
-                return score_1=10+data[2];
-            }
-            }
-        return sum;
-        }
+        return score;
 
     }
+
+    private int getTheTenthScore(int[] data, int score, int i) {
+        if(data[i] + data[i+1] < 10){
+            score += data[i] + data[i+1];
+        }
+        else if (data[i] == 10){
+            score += 10 + data[i+1] + data[i+2];
+        }
+        else {
+            score += 10+ data[i+2];
+        }
+        return score;
+    }
+}
